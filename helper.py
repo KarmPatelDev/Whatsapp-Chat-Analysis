@@ -51,9 +51,8 @@ def create_wordcloud(selected_user, df):
                 y.append(word)
         return " ".join(y)
 
-    wc = WordCloud(width=500, height=500, min_font_size=10, background_color="white")
-    temp["message"].apply(remove_stop_words)
-    wordcloud = wc.generate(temp["message"].str.cat(sep=" "))
+    wc = WordCloud(width=700, height=900, min_font_size=10, background_color="white")
+    wordcloud = wc.generate(temp["message"].apply(remove_stop_words).str.cat(sep=" "))
 
     return wordcloud
 
